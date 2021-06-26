@@ -65,10 +65,11 @@ async fn main() {
     let routes = health.or(hello);
 
     // listen in both tcp46 falling back to IPv4
-    let addr = match IpAddr::from_str("::0") {
-        Ok(a) => a,
-        Err(_) => IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)),
-    };
+    //let addr = match IpAddr::from_str("::0") {
+    //Ok(a) => a,
+    //Err(_) => IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0)),
+    //};
+    let addr = IpAddr::V4(Ipv4Addr::new(0, 0, 0, 0));
 
     // start service
     warp::serve(routes).run((addr, port)).await;
